@@ -145,7 +145,7 @@ def format_markdown(weather_data, almanac_data, constellation_data):
         9: '♐射手', 10: '♑摩羯', 11: '♒水瓶', 12: '♓双鱼'
     }
     content = f"""
-    🌤️ **每日星语** | {today.strftime("%Y-%m-%d 星期 %w").replace("星期0", "星期日")}**  
+    🌤️ **每日星语** | {today.strftime("%Y-%m-%d 星期 %w").replace("星期 0", "星期日")}**  
     &ensp; &emsp; &nbsp;  
     📍 **坐标结界 ➠ {city} | 农历{lunar_date.split(' ')[-1]}  
     &ensp; &emsp; &nbsp;  

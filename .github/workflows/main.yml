@@ -1,27 +1,34 @@
-name: Daily Love Reminder
+name: Combined Daily Reminders
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # UTC 时间每天 0 点（对应北京时间 8 点）
-  workflow_dispatch:     # 允许手动触发
+    - cron: '0 0 * * *'  # UTC 0点（北京时间8点）
+  workflow_dispatch:
 
 jobs:
-  send-reminder:
+  guo-reminder:
     runs-on: ubuntu-latest
-    timeout-minutes: 3   # 超时保护
-
+    timeout-minutes: 3
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 schedule
+      - name: Run Guo's Script
+        run: python guo.py
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'  # 匹配你的开发环境
-
-    - name: Install dependencies
-      run: |
-        pip install requests beautifulsoup4 schedule
-
-    - name: Execute Reminder Script
-      run: python guo.py
+  baozi-reminder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    needs: guo-reminder  # 顺序执行（若需并行则删除此行）
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 schedule
+      - name: Run Baozi's Script
+        run: python pj2.py

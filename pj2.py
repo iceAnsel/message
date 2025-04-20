@@ -7,7 +7,7 @@ import datetime
 from bs4 import BeautifulSoup
 
 # Server酱配置
-sckey = 'SCT276712TJnCoiKggijgh3U2bMqbz46Rd'  # 替换为你的SCKEY
+sckey = 'SCT276767TD9pl14Xmvh6EchYGSbPNsTcC'  # 替换为你的SCKEY
 
 SERVER_CHAN_KEY = 'SCT276712TJnCoiKggijgh3U2bMqbz46Rd'
 API_KEY = "11ecf4bbed19f6ddacdbaffd233e92a5"

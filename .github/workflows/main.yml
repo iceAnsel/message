@@ -2,7 +2,7 @@ name: Triple Daily Reminders
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # UTC 0点（北京时间8点）
+    - cron: '0 22 * * *'  # UTC 0点（北京时间8点）
     # - cron: '*/5 * * * *'  # 测试用：每5分钟触发
   workflow_dispatch:
 
